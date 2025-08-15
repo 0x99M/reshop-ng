@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonSplitPane, IonMenu, IonContent, IonList, IonItem, IonLabel } from '@ionic/angular/standalone';
-import { Products } from "./products/products";
-import { Orders } from "./orders/orders";
+import { Products } from "./components/products/products";
+import { Orders } from "./components/orders/orders";
 
 @Component({
   selector: 'app-root',

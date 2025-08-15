@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Order } from '../types/order';
+import { Order } from '../../types/order';
 import { IonContent, IonList, IonItem, IonButton } from "@ionic/angular/standalone";
 
 @Component({
