@@ -1,0 +1,25 @@
+<ion-content class="orders-container">
+  <h2>Orders</h2>
+  <ion-list class="orders-list">
+    @for (order of orders; track order.id) {
+    <ion-item class="order-item" lines="none">
+      <div class="order-content">
+        <div class="order-header">
+          <div class="order-info">
+            <h3 class="order-id">Order #{{ order.id.substring(0, 8) }}...</h3>
+            <span class="order-date">{{ order.createdAt }}</span>
+          </div>
+          <div class="order-price">${{ order.totalPrice }}</div>
+        </div>
+        <div class="order-details">
+          <div class="order-actions">
+            <ion-button fill="clear" size="small" class="action-btn">
+              View Details
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    }
+  </ion-list>
+</ion-content>

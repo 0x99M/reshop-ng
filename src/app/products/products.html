@@ -1,0 +1,16 @@
+<ion-grid class="product-grid">
+  <ion-row>
+    @for (product of products; track product.id) {
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card class="product-card">
+          <ion-card-header>
+            <ion-card-title class="product-title">{{ product.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="price">${{ product.price }}</div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    }
+  </ion-row>
+</ion-grid>

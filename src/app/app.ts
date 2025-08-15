@@ -1,12 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { IonSplitPane, IonMenu, IonContent, IonList, IonItem, IonLabel } from '@ionic/angular/standalone';
+import { Products } from "./products/products";
+import { Orders } from "./orders/orders";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  templateUrl: 'app.html',
+  styleUrls: ['app.css'],
+  standalone: true,
+  imports: [
+    IonSplitPane,
+    IonMenu,
+    IonContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    Products,
+    Orders
+]
 })
 export class App {
-  protected readonly title = signal('reshop-ng');
+  activeView: string = 'products';
+
+  changeView(newView: string) {
+    this.activeView = newView;
+  }
 }
