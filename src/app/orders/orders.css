@@ -1,0 +1,92 @@
+.orders-container {
+  margin: 1rem;
+}
+
+.orders-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.orders-header p {
+  color: #343434;
+  font-size: 0.9rem;
+}
+
+.order-item {
+  margin: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+}
+
+.order-content {
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.order-info h3 {
+  color: #343434;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.order-date {
+  color: #7f8c8d;
+  font-size: 0.85rem;
+}
+
+.order-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #436a8a;
+}
+
+.order-details {
+  border-top: 1px solid #ecf0f1;
+  padding-top: 1rem;
+}
+
+.order-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  color: #667eea;
+  font-size: 0.85rem;
+  height: 36px;
+}
+
+.action-btn:hover {
+  --background: rgba(102, 126, 234, 0.1);
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 0.5rem;
+  }
+
+  .order-content {
+    padding: 1rem;
+  }
+
+  .order-price {
+    font-size: 1.2rem;
+  }
+
+  .action-btn {
+    font-size: 0.8rem;
+    height: 32px;
+  }
+}

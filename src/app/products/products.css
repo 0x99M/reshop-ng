@@ -1,0 +1,33 @@
+.product-grid {
+  margin: 1rem;
+}
+
+.product-card {
+  border-radius: 16px;
+  margin: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #343434;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #436a8a;
+}
+
+ion-card-content {
+  margin: 0;
+  padding: 0;
+}
