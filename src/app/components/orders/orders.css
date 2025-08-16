@@ -1,92 +1,219 @@
 .orders-container {
-  margin: 1rem;
+  padding: var(--space-lg);
+  background-color: var(--color-neutral-50);
 }
 
-.orders-container h2 {
+.orders-title {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #343434;
-  font-size: 1.8rem;
-  font-weight: 600;
+  margin-bottom: var(--space-xl);
+  color: var(--color-neutral-800);
 }
 
-.orders-header p {
-  color: #343434;
-  font-size: 0.9rem;
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+  gap: var(--space-md);
 }
 
-.order-item {
-  margin: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
+.loading-spinner {
+  --color: var(--color-primary-500);
+}
+
+.loading-text {
+  text-align: center;
+}
+
+.error-message {
+  text-align: center;
+  padding: var(--space-lg);
+  background-color: var(--color-neutral-0);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin: var(--space-md);
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.order-card {
+  background-color: var(--color-neutral-0);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .order-content {
-  width: 100%;
-  padding: 1.5rem;
+  padding: var(--space-lg);
 }
 
 .order-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
 }
 
-.order-info h3 {
-  color: #343434;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem 0;
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
-.order-date {
-  color: #7f8c8d;
-  font-size: 0.85rem;
+.order-id {
+  margin: 0;
+  color: var(--color-neutral-800);
 }
 
 .order-price {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #436a8a;
-}
-
-.order-details {
-  border-top: 1px solid #ecf0f1;
-  padding-top: 1rem;
+  font-weight: var(--font-h3-weight);
 }
 
 .order-actions {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-neutral-200);
 }
 
 .action-btn {
-  color: #667eea;
-  font-size: 0.85rem;
-  height: 36px;
+  --color: var(--color-primary-500);
+  --border-color: var(--color-primary-500);
+  font-size: var(--font-body2-size);
+  font-weight: var(--font-body2-weight);
+  height: 32px;
+  min-width: 100px;
 }
 
 .action-btn:hover {
-  --background: rgba(102, 126, 234, 0.1);
+  --background: var(--color-primary-50);
+}
+
+.modal-content {
+  padding: var(--space-lg);
+}
+
+.modal-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+  gap: var(--space-md);
+}
+
+.modal-spinner {
+  --color: var(--color-primary-500);
+}
+
+.modal-error {
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.order-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.order-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+}
+
+.order-total {
+  font-weight: var(--font-h4-weight);
+}
+
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.section-title {
+  margin: 0;
+  color: var(--color-neutral-800);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-item {
+  padding: var(--space-md);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.product-name {
+  margin: 0;
+  color: var(--color-neutral-800);
+}
+
+.product-quantity {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .orders-container {
-    padding: 0.5rem;
+    padding: var(--space-md);
   }
 
   .order-content {
-    padding: 1rem;
+    padding: var(--space-md);
+  }
+
+  .order-header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
   }
 
   .order-price {
-    font-size: 1.2rem;
+    align-self: flex-end;
   }
 
-  .action-btn {
-    font-size: 0.8rem;
-    height: 32px;
+  .order-modal {
+    --width: 95%;
+    --max-width: none;
+  }
+
+  .modal-content {
+    padding: var(--space-md);
+  }
+
+  .order-info-section {
+    padding: var(--space-sm);
+  }
+
+  .product-item {
+    padding: var(--space-sm);
   }
 }

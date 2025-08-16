@@ -1,74 +1,86 @@
 @let state = vm();
 
 <ion-content class="orders-container">
-  <h2>Orders</h2>
+  <h2 class="text-h2 orders-title">Orders</h2>
   @if (state.kind === 'loading') {
-  <p>Loading…</p>
+  <div class="loading-state">
+    <ion-spinner class="loading-spinner"></ion-spinner>
+    <p class="text-body2 text-neutral-500 loading-text">Loading orders...</p>
+  </div>
   }
   @if (state.kind === 'err') {
-  <p class="error">{{ state.error }}</p>
+  <p class="text-body2 text-error error-message">{{ state.error }}</p>
   }
   @if (state.kind === 'ok') {
-  <ion-list class="orders-list">
+  <div class="orders-list">
     @for (order of state.data; track order.id) {
-    <ion-item class="order-item" lines="none">
+    <div class="order-card">
       <div class="order-content">
         <div class="order-header">
           <div class="order-info">
-            <h3 class="order-id">Order #{{ order.id.substring(0, 8) }}...</h3>
-            <span class="order-date"><strong>Created:</strong> {{ order.createdAt | date:'medium' }}</span>
+            <h4 class="text-h4 order-id">Order #{{ order.id.substring(0, 8) }}...</h4>
+            <span class="text-body2 text-neutral-600 order-date">{{ order.createdAt | date:'medium' }}</span>
           </div>
-          <div class="order-price">${{ order.totalPrice }}</div>
+          <div class="text-h3 text-primary-500 order-price">${{ order.totalPrice }}</div>
         </div>
-        <div class="order-details">
-          <div class="order-actions">
-            <ion-button id="open-order-{{ order.id }}" fill="clear" size="small" class="action-btn"
-              (click)="selectOrder(order.id)">
-              View Details
-            </ion-button>
-          </div>
+        <div class="order-actions">
+          <ion-button id="open-order-{{ order.id }}" fill="clear" size="small" class="action-btn"
+            (click)="selectOrder(order.id)">
+            View Details
+          </ion-button>
         </div>
       </div>
-    </ion-item>
-    <ion-modal [trigger]="'open-order-' + order.id">
+    </div>
+    <ion-modal [trigger]="'open-order-' + order.id" class="order-modal">
       <ng-template>
         @let orderProductsState = selectedOrderProducts();
         <ion-header>
           <ion-toolbar>
-            <ion-title>Order Details</ion-title>
+            <ion-title class="text-h4">Order Details</ion-title>
             <ion-buttons slot="end">
-              <ion-button (click)="modal.dismiss()">Close</ion-button>
+              <ion-button fill="clear" (click)="modal.dismiss()">Close</ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
 
-        <ion-content class="ion-padding">
-          <ion-content class="ion-padding">
-            @if (orderProductsState.kind === 'loading') {
-            <ion-spinner></ion-spinner>
-            } @else if (orderProductsState.kind === 'err') {
-            <p class="error">{{ orderProductsState.error }}</p>
-            } @else {
-            <p><strong>UUID:</strong> {{ order.id }}</p>
-            <p><strong>Created:</strong> {{ order.createdAt | date:'medium' }}</p>
-            <p><strong>Total:</strong> {{ order.totalPrice | currency }}</p>
+        <ion-content class="modal-content">
+          @if (orderProductsState.kind === 'loading') {
+          <div class="modal-loading-state">
+            <ion-spinner class="modal-spinner"></ion-spinner>
+            <p class="text-body2 text-neutral-500">Loading order details...</p>
+          </div>
+          } @else if (orderProductsState.kind === 'err') {
+          <p class="text-body2 text-error modal-error">{{ orderProductsState.error }}</p>
+          } @else {
+          <div class="order-details-content">
+            <div class="order-info-section">
+              <p class="text-body1"><span class="text-neutral-600">UUID:</span> <span class="text-neutral-800">{{
+                  order.id }}</span></p>
+              <p class="text-body1"><span class="text-neutral-600">Created:</span> <span class="text-neutral-800">{{
+                  order.createdAt | date:'medium' }}</span></p>
+              <p class="text-body1"><span class="text-neutral-600">Total:</span> <span
+                  class="text-primary-500 order-total">{{ order.totalPrice | currency }}</span></p>
+            </div>
 
-            <ion-list>
-              @for (p of orderProductsState.data; track p.productId) {
-              <ion-item>
-                <ion-label>
-                  <h3>Product: [{{ p.productId }}]</h3>
-                  <p>Quantity x {{ p.quantity }}</p>
-                </ion-label>
-              </ion-item>
-              }
-            </ion-list>
-            }
-          </ion-content>
+            <div class="products-section">
+              <h5 class="text-h4 section-title">Products</h5>
+              <div class="products-list">
+                @for (p of orderProductsState.data; track p.productId) {
+                <div class="product-item">
+                  <div class="product-info">
+                    <h6 class="text-body1 product-name">Product: [{{ p.productId }}]</h6>
+                    <p class="text-body2 text-neutral-600 product-quantity">Quantity: {{ p.quantity }}</p>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+          }
         </ion-content>
       </ng-template>
     </ion-modal>
     }
-  </ion-list>
+  </div>
   }
 </ion-content>
