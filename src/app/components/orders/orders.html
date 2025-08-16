@@ -16,19 +16,58 @@
         <div class="order-header">
           <div class="order-info">
             <h3 class="order-id">Order #{{ order.id.substring(0, 8) }}...</h3>
-            <span class="order-date">{{ order.createdAt }}</span>
+            <span class="order-date"><strong>Created:</strong> {{ order.createdAt | date:'medium' }}</span>
           </div>
           <div class="order-price">${{ order.totalPrice }}</div>
         </div>
         <div class="order-details">
           <div class="order-actions">
-            <ion-button fill="clear" size="small" class="action-btn">
+            <ion-button id="open-order-{{ order.id }}" fill="clear" size="small" class="action-btn"
+              (click)="selectOrder(order.id)">
               View Details
             </ion-button>
           </div>
         </div>
       </div>
     </ion-item>
+    <ion-modal [trigger]="'open-order-' + order.id">
+      <ng-template>
+        @let orderProductsState = selectedOrderProducts();
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Order Details</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+          <ion-content class="ion-padding">
+            @if (orderProductsState.kind === 'loading') {
+            <ion-spinner></ion-spinner>
+            } @else if (orderProductsState.kind === 'err') {
+            <p class="error">{{ orderProductsState.error }}</p>
+            } @else {
+            <p><strong>UUID:</strong> {{ order.id }}</p>
+            <p><strong>Created:</strong> {{ order.createdAt | date:'medium' }}</p>
+            <p><strong>Total:</strong> {{ order.totalPrice | currency }}</p>
+
+            <ion-list>
+              @for (p of orderProductsState.data; track p.productId) {
+              <ion-item>
+                <ion-label>
+                  <h3>Product: [{{ p.productId }}]</h3>
+                  <p>Quantity x {{ p.quantity }}</p>
+                </ion-label>
+              </ion-item>
+              }
+            </ion-list>
+            }
+          </ion-content>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
     }
   </ion-list>
   }
