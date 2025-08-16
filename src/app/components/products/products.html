@@ -9,9 +9,17 @@
   <p class="error">{{ state.error }}</p>
   }
   @if (state.kind === 'ok') {
-  <ion-button id="open-add-product">
-    Add Product
-  </ion-button>
+  <div class="options-container">
+    <ion-button id="open-add-product">
+      Add Product
+    </ion-button>
+    <ion-button id="place-order" (click)="placeOrder()" [disabled]="placing() || !cartItems().length">
+      @if (placing()) {
+      <ion-spinner slot="start" name="dots"></ion-spinner>
+      }
+      Place Order
+    </ion-button>
+  </div>
   <ion-grid class="product-grid">
     <ion-row>
       @for (product of state.data; track product.id) {
@@ -23,6 +31,15 @@
           <ion-card-content>
             <div class="price">${{ product.price }}</div>
           </ion-card-content>
+          <div class="product-actions">
+            <ion-button fill="clear" (click)="removeFromCart(product.id)">
+              -
+            </ion-button>
+            <p>{{ getItemQuantity(product.id) }}</p>
+            <ion-button fill="clear" (click)="addToCart(product.id)">
+              +
+            </ion-button>
+          </div>
         </ion-card>
       </ion-col>
       }

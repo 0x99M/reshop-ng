@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: var(--space-xl);
 }
 
 .products-container h2 {
@@ -14,6 +14,11 @@
   text-align: center;
   margin: 0;
   font-family: var(--font-primary);
+}
+
+.options-container {
+  display: flex;
+  gap: var(--space-xl);
 }
 
 #open-add-product {
@@ -28,7 +33,24 @@
   --padding-start: var(--space-lg);
   --padding-end: var(--space-lg);
 
-  margin-bottom: var(--space-lg);
+  font-size: var(--font-body1-size);
+  font-family: var(--font-primary);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+#place-order {
+  --background: var(--color-secondary-500);
+  --background-hover: var(--color-secondary-600);
+  --background-activated: var(--color-secondary-700);
+  --color: var(--color-neutral-800);
+  --border-radius: var(--radius-md);
+  --box-shadow: var(--shadow-md);
+  --padding-top: var(--space-sm);
+  --padding-bottom: var(--space-sm);
+  --padding-start: var(--space-lg);
+  --padding-end: var(--space-lg);
+
   font-size: var(--font-body1-size);
   font-family: var(--font-primary);
   text-transform: none;
@@ -103,6 +125,24 @@
   margin: var(--space-xl) 0;
 }
 
+.product-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  align-items: center;
+}
+
+.product-actions ion-button {
+  height: var(--space-sm);
+  font-weight: var(--font-h2-weight);
+  font-size: var(--font-body1-size);
+}
+
+.product-actions p {
+  margin: 0;
+  font-weight: var(--font-h2-weight);
+}
+
 .error {
   color: var(--color-error) !important;
   font-weight: var(--font-body1-weight);
@@ -160,7 +200,7 @@ ion-modal ion-button {
   --color: var(--color-neutral-0);
   --border-radius: var(--radius-md);
   --box-shadow: var(--shadow-md);
-  
+
   height: 48px;
   margin-top: var(--space-lg);
   font-size: var(--font-body1-size);
@@ -184,11 +224,11 @@ ion-modal ion-button[fill="clear"]:hover {
   .products-container {
     padding: var(--space-md);
   }
-  
+
   .product-grid ion-col {
     padding: var(--space-xs);
   }
-  
+
   .product-card {
     padding: var(--space-sm);
   }
