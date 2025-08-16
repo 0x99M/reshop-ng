@@ -1,7 +1,16 @@
+@let state = vm();
+
 <ion-content class="orders-container">
   <h2>Orders</h2>
+  @if (state.kind === 'loading') {
+  <p>Loading…</p>
+  }
+  @if (state.kind === 'err') {
+  <p class="error">{{ state.error }}</p>
+  }
+  @if (state.kind === 'ok') {
   <ion-list class="orders-list">
-    @for (order of orders; track order.id) {
+    @for (order of state.data; track order.id) {
     <ion-item class="order-item" lines="none">
       <div class="order-content">
         <div class="order-header">
@@ -22,4 +31,5 @@
     </ion-item>
     }
   </ion-list>
+  }
 </ion-content>

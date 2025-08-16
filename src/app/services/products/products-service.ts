@@ -8,7 +8,7 @@ import { DataState, DataStateFactory } from "../../shared/data-state";
 export class ProductsService {
   private readonly url = `${environment.apiUrl}/products`;
 
-  constructor(private state: DataStateFactory) {}
+  constructor(private state: DataStateFactory) { }
 
   getAll(): Observable<DataState<Product[]>> {
     return this.state.get<Product[]>(this.url);
