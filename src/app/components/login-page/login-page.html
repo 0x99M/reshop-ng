@@ -5,25 +5,29 @@
         <h1>Welcome Back</h1>
         <p>Please sign in to your account</p>
       </div>
-      
+
       <div class="form-group">
         <ion-item>
-          <ion-input type="username" placeholder="username" [(ngModel)]="credentials.username" name="username" required></ion-input>
+          <ion-input label="Username" labelPlacement="floating" type="text" [(ngModel)]="credentials.username"
+            name="username" required>
+          </ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password" name="password" required></ion-input>
+          <ion-input label="Password" labelPlacement="floating" type="password" [(ngModel)]="credentials.password"
+            name="password" required>
+          </ion-input>
         </ion-item>
       </div>
 
-      <ion-button expand="block" type="submit" [disabled]="loading" class="login-button">
+      <ion-button type="submit" [disabled]="loading" class="login-button">
         {{ loading ? 'Logging in...' : 'Sign In' }}
       </ion-button>
 
       @if (error) {
-      <ion-text color="danger" class="error-message">
+      <div class="error-message">
         <p>{{ error }}</p>
-      </ion-text>
+      </div>
       }
     </form>
   </div>

@@ -2,75 +2,101 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: var(--space-2xl);
+  min-height: 100%;
 }
 
 .login-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: var(--color-neutral-0);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   width: 100%;
   max-width: 400px;
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-2xl);
 }
 
 .login-header h1 {
-  color: #2c3e50;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  color: var(--color-neutral-800);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
 }
 
 .login-header p {
-  color: #7f8c8d;
-  font-size: 0.9rem;
+  color: var(--color-neutral-500);
+  font-size: 1rem;
+  line-height: 1.5;
   margin: 0;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-xl);
 }
 
 .form-group ion-item {
-  --border-radius: 12px;
-  --background: #f8f9fa;
-  margin-bottom: 1rem;
+  --border-radius: var(--radius-md);
+  --background: var(--color-neutral-50);
+  margin-bottom: var(--space-md);
+  --color: var(--color-neutral-700);
+  --placeholder-color: var(--color-neutral-400);
+  --placeholder-font-style: normal;
+}
+
+.form-group ion-item ion-label {
+  color: var(--color-neutral-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-group ion-item ion-input {
+  font-size: 1rem;
 }
 
 .login-button {
-  --background: linear-gradient(45deg, #667eea, #764ba2);
-  --border-radius: 12px;
-  margin-top: 1rem;
-  font-weight: 500;
+  --background: var(--color-primary);
+  --color: var(--color-neutral-0);
+  --border-radius: var(--radius-md);
+  margin-top: var(--space-lg);
+  font-weight: 400;
   height: 48px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  font-size: 1rem;
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  box-shadow: var(--shadow-sm);
 }
 
 .error-message {
   text-align: center;
-  margin-top: 1rem;
-  font-size: 0.85rem;
+  margin-top: var(--space-lg);
+  font-size: 0.875rem;
+  color: var(--color-error);
 }
 
 .error-message p {
   margin: 0;
 }
 
-/* Mobile responsive */
 @media (max-width: 480px) {
   .login-container {
-    padding: 1rem;
+    padding: var(--space-lg);
   }
-  
+
   .login-form {
-    padding: 1.5rem;
+    padding: var(--space-xl);
   }
-  
+
   .login-header h1 {
     font-size: 1.5rem;
+    line-height: 1.35;
   }
 }
