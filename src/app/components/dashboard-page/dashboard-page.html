@@ -5,9 +5,11 @@
         <ion-item button (click)="changeView('products')">
           <ion-label>Products</ion-label>
         </ion-item>
+        @if (role() === 'admin') {
         <ion-item button (click)="changeView('orders')">
           <ion-label>Orders</ion-label>
         </ion-item>
+        }
       </ion-list>
     </ion-content>
     <ion-footer>

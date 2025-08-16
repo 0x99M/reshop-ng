@@ -10,15 +10,17 @@
   }
   @if (state.kind === 'ok') {
   <div class="options-container">
-    <ion-button id="open-add-product">
-      Add Product
-    </ion-button>
+    @if (['admin', 'supplier'].includes(role())) {
+    <ion-button id="open-add-product">Add Product</ion-button>
+    }
+    @if (['admin', 'customer'].includes(role())) {
     <ion-button id="place-order" (click)="placeOrder()" [disabled]="placing() || !cartItems().length">
       @if (placing()) {
       <ion-spinner slot="start" name="dots"></ion-spinner>
       }
       Place Order
     </ion-button>
+    }
   </div>
   <ion-grid class="product-grid">
     <ion-row>
@@ -31,6 +33,7 @@
           <ion-card-content>
             <div class="price">${{ product.price }}</div>
           </ion-card-content>
+          @if (['admin', 'customer'].includes(role())) {
           <div class="product-actions">
             <ion-button fill="clear" (click)="removeFromCart(product.id)">
               -
@@ -40,6 +43,7 @@
               +
             </ion-button>
           </div>
+          }
         </ion-card>
       </ion-col>
       }
@@ -48,7 +52,7 @@
   }
 </div>
 
-@if (state.kind === 'ok') {
+@if (state.kind === 'ok' && ['admin', 'supplier'].includes(role())) {
 <ion-modal trigger="open-add-product" class="modal-container">
   <ng-template>
     <div class="modal-content">

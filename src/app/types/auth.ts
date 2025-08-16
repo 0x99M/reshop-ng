@@ -12,3 +12,8 @@ export interface LoginResponse {
     role: string
   }
 }
+
+export interface Auth {
+  token: string;
+  role: string;
+}

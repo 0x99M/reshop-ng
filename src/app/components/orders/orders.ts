@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { OrderProduct } from '../../types/order-product';
 import { distinctUntilChanged, of, switchMap } from 'rxjs';
+import { AuthService } from '../../services/auth/auth-service';
 
 @Component({
   selector: 'orders-view',
@@ -18,6 +19,7 @@ import { distinctUntilChanged, of, switchMap } from 'rxjs';
   styleUrl: './orders.css'
 })
 export class Orders {
+  private authService = inject(AuthService);
   private service = inject(OrdersService);
   modal = inject(ModalController);
 
@@ -42,5 +44,9 @@ export class Orders {
 
   selectOrder(orderId: string | null): void {
     this.selectedOrderId.set(orderId);
+  }
+
+  role() {
+    return this.authService.getRole();
   }
 }

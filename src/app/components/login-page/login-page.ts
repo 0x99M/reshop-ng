@@ -31,6 +31,7 @@ export class LoginPage {
     this.authService.login(this.credentials).subscribe({
       next: (res) => {
         this.authService.saveToken(res.token);
+        this.authService.saveRole(res.user.role);
         this.router.navigate(['/']);
       },
       error: (err) => {

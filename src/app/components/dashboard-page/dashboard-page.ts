@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IonSplitPane, IonMenu, IonContent, IonList, IonItem, IonLabel, IonFooter, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { Orders } from '../orders/orders';
 import { Products } from '../products/products';
@@ -25,9 +25,10 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class DashboardPage {
-  activeView: string = 'products';
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
-  constructor(private authService: AuthService, private router: Router) {}
+  activeView: string = 'products';
 
   changeView(newView: string) {
     this.activeView = newView;
@@ -36,5 +37,9 @@ export class DashboardPage {
   onLogout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  role() {
+    return this.authService.getRole();
   }
 }

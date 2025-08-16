@@ -7,6 +7,7 @@ import { IonicModule, ModalController, ToastController } from "@ionic/angular";
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CartService } from '../../services/cart/cart-service';
+import { AuthService } from '../../services/auth/auth-service';
 
 @Component({
   selector: 'products-view',
@@ -20,6 +21,7 @@ import { CartService } from '../../services/cart/cart-service';
 })
 export class Products {
   private productsService = inject(ProductsService);
+  private authService = inject(AuthService);
   private cartService = inject(CartService);
   private toast = inject(ToastController);
   formBuilder = inject(FormBuilder);
@@ -70,5 +72,9 @@ export class Products {
       error: err => this.toast.create({ message: err.error?.error ?? 'Failed', duration: 3000 }).then(t => t.present()),
       complete: () => this.placing.set(false)
     });
+  }
+
+  role() {
+    return this.authService.getRole();
   }
 }
