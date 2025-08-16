@@ -22,16 +22,19 @@
 
 .login-header h1 {
   color: var(--color-neutral-800);
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: var(--font-h1-size);
+  font-weight: var(--font-h1-weight);
+  line-height: var(--font-h1-line);
+  font-family: var(--font-primary);
   margin-bottom: var(--space-sm);
-  font-weight: 700;
 }
 
 .login-header p {
   color: var(--color-neutral-500);
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: var(--font-body1-size);
+  font-weight: var(--font-body1-weight);
+  line-height: var(--font-body1-line);
+  font-family: var(--font-primary);
   margin: 0;
 }
 
@@ -42,6 +45,8 @@
 .form-group ion-item {
   --border-radius: var(--radius-md);
   --background: var(--color-neutral-50);
+  --padding-start: var(--space-sm);
+  --padding-end: var(--space-sm);
   margin-bottom: var(--space-md);
   --color: var(--color-neutral-700);
   --placeholder-color: var(--color-neutral-400);
@@ -49,25 +54,31 @@
 }
 
 .form-group ion-item ion-label {
-  color: var(--color-neutral-600);
-  font-size: 0.875rem;
-  font-weight: 500;
+  color: var(--color-neutral-700);
+  font-size: var(--font-body2-size);
+  font-weight: var(--font-body2-weight);
+  font-family: var(--font-primary);
 }
 
 .form-group ion-item ion-input {
-  font-size: 1rem;
+  font-size: var(--font-body1-size);
+  font-weight: var(--font-body1-weight);
+  font-family: var(--font-primary);
+  --color: var(--color-neutral-700);
 }
 
 .login-button {
-  --background: var(--color-primary);
+  --background: var(--color-primary-500);
   --color: var(--color-neutral-0);
   --border-radius: var(--radius-md);
   margin-top: var(--space-lg);
-  font-weight: 400;
+  font-size: var(--font-body1-size);
+  font-weight: var(--font-body1-weight);
+  font-family: var(--font-primary);
   height: 48px;
   width: 100%;
   box-shadow: var(--shadow-md);
-  font-size: 1rem;
+  min-width: 120px;
 }
 
 .login-button:disabled {
@@ -78,7 +89,10 @@
 .error-message {
   text-align: center;
   margin-top: var(--space-lg);
-  font-size: 0.875rem;
+  font-size: var(--font-caption-size);
+  font-weight: var(--font-caption-weight);
+  line-height: var(--font-caption-line);
+  font-family: var(--font-primary);
   color: var(--color-error);
 }
 
@@ -96,7 +110,7 @@
   }
 
   .login-header h1 {
-    font-size: 1.5rem;
-    line-height: 1.35;
+    font-size: var(--font-h3-size);
+    line-height: var(--font-h3-line);
   }
 }
