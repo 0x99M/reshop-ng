@@ -21,12 +21,12 @@ export class OrdersService {
     return this.state.get<OrderProduct[]>(`${this.url}/${orderId}/products`);
   }
 
-  add(p: Omit<Order, 'id'>): Observable<DataState<Order>> {
-    return this.state.post<Order>(this.url, p);
+  add(order: Omit<Order, 'id'>): Observable<DataState<Order>> {
+    return this.state.post<Order>(this.url, order);
   }
 
-  update(id: string, p: Partial<Order>): Observable<DataState<Order>> {
-    return this.state.put<Order>(`${this.url}/${id}`, p);
+  update(id: string, order: Partial<Order>): Observable<DataState<Order>> {
+    return this.state.put<Order>(`${this.url}/${id}`, order);
   }
 
   remove(id: string): Observable<DataState<void>> {
