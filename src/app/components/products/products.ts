@@ -27,7 +27,7 @@ export class Products {
   formBuilder = inject(FormBuilder);
   modal = inject(ModalController);
 
-  vm = toSignal(this.productsService.getAll(), {
+  vm = toSignal(this.productsService.products$, {
     initialValue: { kind: 'loading' } as DataState<Product[]>
   });
 
