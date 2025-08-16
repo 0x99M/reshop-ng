@@ -54,21 +54,21 @@
           } @else {
           <div class="order-details-content">
             <div class="order-info-section">
-              <p class="text-body1"><span class="text-neutral-600">UUID:</span> <span class="text-neutral-800">{{
+              <p class="text-body1"><span class="text-neutral-600">UUID: </span> <span class="text-neutral-800">{{
                   order.id }}</span></p>
-              <p class="text-body1"><span class="text-neutral-600">Created:</span> <span class="text-neutral-800">{{
+              <p class="text-body1"><span class="text-neutral-600">Created: </span> <span class="text-neutral-800">{{
                   order.createdAt | date:'medium' }}</span></p>
-              <p class="text-body1"><span class="text-neutral-600">Total:</span> <span
+              <p class="text-body1"><span class="text-neutral-600">Total: </span> <span
                   class="text-primary-500 order-total">{{ order.totalPrice | currency }}</span></p>
             </div>
 
             <div class="products-section">
-              <h5 class="text-h4 section-title">Products</h5>
+              <h5 class="text-h4 section-title">Order Products</h5>
               <div class="products-list">
                 @for (p of orderProductsState.data; track p.productId) {
                 <div class="product-item">
                   <div class="product-info">
-                    <h6 class="text-body1 product-name">Product: [{{ p.productId }}]</h6>
+                    <h6 class="text-body1 product-name">Product: #{{ p.productId }}</h6>
                     <p class="text-body2 text-neutral-600 product-quantity">Quantity: {{ p.quantity }}</p>
                   </div>
                 </div>

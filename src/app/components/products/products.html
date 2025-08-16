@@ -1,6 +1,6 @@
 @let state = vm();
 
-<ion-content class="products-container">
+<div class="products-container">
   <h2>Products</h2>
   @if (state.kind === 'loading') {
   <p>Loading…</p>
@@ -29,37 +29,33 @@
     </ion-row>
   </ion-grid>
   }
-</ion-content>
+</div>
 
 @if (state.kind === 'ok') {
-<ion-modal trigger="open-add-product">
+<ion-modal trigger="open-add-product" class="modal-container">
   <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Add Product</ion-title>
-        <ion-buttons slot="end">
-          <ion-button fill="clear" (click)="modal.dismiss()">Cancel</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
+    <div class="modal-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Add Product</ion-title>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="modal.dismiss()">Cancel</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
 
-    <ion-content class="ion-padding">
-      <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
-        <ion-item>
-          <ion-label position="floating">Name</ion-label>
-          <ion-input formControlName="name"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Price</ion-label>
-          <ion-input type="number" formControlName="price"></ion-input>
-        </ion-item>
-
-        <ion-button type="submit" expand="block" [disabled]="productForm.invalid">
-          Save
-        </ion-button>
-      </form>
-    </ion-content>
+      <ion-content class="ion-padding">
+        <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+          <ion-item>
+            <ion-input placeholder="Name" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Price" type="number" formControlName="price"></ion-input>
+          </ion-item>
+          <ion-button type="submit" [disabled]="productForm.invalid">Save</ion-button>
+        </form>
+      </ion-content>
+    </div>
   </ng-template>
 </ion-modal>
 }
