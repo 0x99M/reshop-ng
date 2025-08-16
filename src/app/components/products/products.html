@@ -1,6 +1,20 @@
-<ion-grid class="product-grid">
-  <ion-row>
-    @for (product of products; track product.id) {
+@let state = vm();
+
+<ion-content class="products-container">
+  <h2>Products</h2>
+  @if (state.kind === 'loading') {
+  <p>Loading…</p>
+  }
+  @if (state.kind === 'err') {
+  <p class="error">{{ state.error }}</p>
+  }
+  @if (state.kind === 'ok') {
+  <ion-button id="open-add-product">
+    Add Product
+  </ion-button>
+  <ion-grid class="product-grid">
+    <ion-row>
+      @for (product of state.data; track product.id) {
       <ion-col size="12" size-md="6" size-lg="4">
         <ion-card class="product-card">
           <ion-card-header>
@@ -11,6 +25,41 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-    }
-  </ion-row>
-</ion-grid>
+      }
+    </ion-row>
+  </ion-grid>
+  }
+</ion-content>
+
+@if (state.kind === 'ok') {
+<ion-modal trigger="open-add-product">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Add Product</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Price</ion-label>
+          <ion-input type="number" formControlName="price"></ion-input>
+        </ion-item>
+
+        <ion-button type="submit" expand="block" [disabled]="productForm.invalid">
+          Save
+        </ion-button>
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+}

@@ -1,5 +1,20 @@
-.product-grid {
+.products-container {
   margin: 1rem;
+}
+
+.products-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #343434;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+ion-button {
+  --border-radius: 8px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-card {
