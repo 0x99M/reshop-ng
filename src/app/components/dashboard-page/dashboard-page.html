@@ -1,0 +1,28 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content" type="push">
+    <ion-content>
+      <ion-list>
+        <ion-item button (click)="changeView('products')">
+          <ion-label>Products</ion-label>
+        </ion-item>
+        <ion-item button (click)="changeView('orders')">
+          <ion-label>Orders</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <div id="main-content">
+    @if (activeView === 'products') {
+    <ion-content>
+      <products-view></products-view>
+    </ion-content>
+    } @else if (activeView === 'orders') {
+    <ion-content>
+      <orders-view></orders-view>
+    </ion-content>
+    } @else {
+    <ion-content>
+    </ion-content>
+    }
+  </div>
+</ion-split-pane>

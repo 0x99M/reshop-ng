@@ -1,28 +1,11 @@
 import { Component } from '@angular/core';
-import { IonSplitPane, IonMenu, IonContent, IonList, IonItem, IonLabel } from '@ionic/angular/standalone';
-import { Products } from "./components/products/products";
-import { Orders } from "./components/orders/orders";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.html',
   styleUrls: ['app.css'],
+  imports: [RouterOutlet],
   standalone: true,
-  imports: [
-    IonSplitPane,
-    IonMenu,
-    IonContent,
-    IonList,
-    IonItem,
-    IonLabel,
-    Products,
-    Orders
-]
 })
-export class App {
-  activeView: string = 'products';
-
-  changeView(newView: string) {
-    this.activeView = newView;
-  }
-}
+export class App {}
